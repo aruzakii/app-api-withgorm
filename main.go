@@ -252,10 +252,10 @@ func setupRouter() *gin.Engine {
 		getHandler(ctx, db)
 	})
 
-	v1.PUT("/student/:stud_id", func(ctx *gin.Context) {
+	v1.PUT("/student/:stud_id",middleware.AuthValidate, func(ctx *gin.Context) {
 		putHandler(ctx, db)
 	})
-	v1.DELETE("/student/:stud_id", func(ctx *gin.Context) {
+	v1.DELETE("/student/:stud_id",middleware.AuthValidate, func(ctx *gin.Context) {
 		delHandler(ctx, db)
 	})
 
